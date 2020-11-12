@@ -1,0 +1,17 @@
+{
+    "name": "gupes/php.zero",
+    "authors": [
+        {
+            "name": "Gustavo Pessoa",
+            "email": "gupessoa@live.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GuPes\\Framework\\": "src"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.4"
+    }
+}
