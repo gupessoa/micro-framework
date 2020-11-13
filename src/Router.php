@@ -10,6 +10,7 @@ class Router
     private $method;
     // a url atual
     private $path;
+    private $params; // uma variável nova para armazenar os valores
 
     // injeto o método HTTP e a url atual na minha classe
     public function __construct($method, $path)
@@ -49,7 +50,11 @@ class Router
         // removo todas as chaves ({})
         $regex = preg_replace('/{([a-zA-Z]+)}/', '([a-zA-Z0-9+])', $regex);
         // executo (finalmente) as expressões regulares
-        $result = preg_match('/^' . $regex . '$/', $path);
+        // adicionei a variável $params para "guardar" os parâmetros variáveis
+        // que a regex encontrar
+        $result = preg_match('/^' . $regex . '$/', $path, $params);
+        // guardo na variável params da classe
+        $this->params = $params;
 
         // O $result retorna a quantidade de valores encontrados
         return $result;
@@ -85,6 +90,13 @@ class Router
         $this->routes[$method][$route] = $action;
     }
 
+    // um método para retornar os parâmetros sem permitir
+    // que sejam alterados fora da classe
+    public function getParams()
+    {
+        return $this->params;
+    }
+
     public function handler()
     {
         if (empty($this->routes[$this->method])) {
@@ -105,6 +117,7 @@ class Router
                 return $action;
             }
         }
+
         // se não achar nada, retorno false
         return false;
     }

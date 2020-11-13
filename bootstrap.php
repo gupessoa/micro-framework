@@ -1,21 +1,24 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+
 
 require __DIR__.'/vendor/autoload.php';
 
 // defino o método http e a url amigável
 $method = $_SERVER['REQUEST_METHOD'];
-$path = $_SERVER['PATH_INFO'] ?? '/';
+$path = $_SERVER['REQUEST_URI'] ?? '/';
 
 // instancio o Router
-$router = new \GuPes\Framework\Router;
+$router = new \GuPes\Framework\Router($method, $path);
 
 // registro as rotas
 $router->get('/', function () {
     return 'Olá mundo';
 });
 
-$router->get('/ola-{nome}', function () {
-    return 'Olá mundo 2';
+$router->get('/ola-{nome}', function ($params) {
+    return 'Olá ' . $params[1]; // o parametro 0 é a rota toda
 });
 
 // faço o router encontrar a rota que o usuário acessou
@@ -29,4 +32,4 @@ if (!$result) {
 }
 
 // imprimo a página atual
-echo $result();
+echo $result($router->getParams());

@@ -87,7 +87,7 @@ class RouterTest extends TestCase
 
     public function testVerificaSeEncontraRotaVariavel()
     {
-        $router = new Router('GET', '/ola-erik');
+        $router = new Router('GET', '/ola-gu');
         $router->add('GET', '/ola-{nome}', function () {
             return true;
         });
