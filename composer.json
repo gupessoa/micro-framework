@@ -12,9 +12,19 @@
             "GuPes\\Framework\\": "src"
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "modules/users"
+        }
+    ],
     "require": {
         "phpunit/phpunit": "^9.4",
         "illuminate/database": "^8.14",
-        "twig/twig": "^3.0"
-    }
+        "twig/twig": "^3.0",
+        "gupes/users": "dev-master",
+        "illuminate/events": "^8.14"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -64,14 +64,14 @@ class Router
     // atalho para o add
     public function get(string $route, $action)
     {
-        $this->add('GET', $route, $action);
+        return $this->add('GET', $route, $action);
     }
 
     // para facilitar o uso eu criei esse método
     // atualho para o add
     public function post(string $route, $action)
     {
-        $this->add('POST', $route, $action);
+        return $this->add('POST', $route, $action);
     }
 
     /*
@@ -87,7 +87,8 @@ class Router
     */
     public function add(string $method, string $route, $action)
     {
-        $this->routes[$method][$route] = $action;
+        $this->routes[$method][$route] = new RouteEntity($action);
+        return $this->routes[$method][$route];
     }
 
     // um método para retornar os parâmetros sem permitir

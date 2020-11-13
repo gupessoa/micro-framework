@@ -1,0 +1,15 @@
+{
+    "name": "gupes/users",
+    "authors": [
+        {
+            "name": "Gustavo Pessoa",
+            "email": "gupessoa@live.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GuPes\\Framework\\Users\\": "src"
+        }
+    },
+    "require": {}
+}
