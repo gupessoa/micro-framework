@@ -62,14 +62,14 @@ class Router
 
     // para facilitar o uso eu criei esse método
     // atalho para o add
-    public function get(string $route, callable $action)
+    public function get(string $route, $action)
     {
         $this->add('GET', $route, $action);
     }
 
     // para facilitar o uso eu criei esse método
     // atualho para o add
-    public function post(string $route, callable $action)
+    public function post(string $route, $action)
     {
         $this->add('POST', $route, $action);
     }
@@ -85,7 +85,7 @@ class Router
         Como exercício, você pode adicionar uma verificação para ver se a rota
         já foi registrada ANTES.
     */
-    public function add(string $method, string $route, callable $action)
+    public function add(string $method, string $route, $action)
     {
         $this->routes[$method][$route] = $action;
     }
